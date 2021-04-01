@@ -18,22 +18,13 @@
 Создана для развлечения. Эта кнопка высылает один
 рандомный факт, связанный с программированием.
 ## Описание зависимостей
-```
-<dependency>
-            <groupId>org.telegram</groupId>
-            <artifactId>telegrambots</artifactId>
-            <version>4.8.1</version>
-</dependency>
-```
-```
-<dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.13.1</version>
-</dependency>
-```
+Библиотека org.telegram версии 4.8.1
+
+Библиотека org.jsoup версии 1.13.1
 ## Запуск проекта
-Для запуска проекта нам понадобится приложение «Telegram».
+Для запуска проекта нам нужна среда разработки IntelijIdea
+и система сборки Maven. В скачанном проекте нужно запустить класс Bot()
+Для проверки работы проекта нам понадобится приложение «Telegram».
 Нужно зайти в приложение, ввести в строку поиска @HelpCoding_bot
 и нажать на кнопку /start.
 
