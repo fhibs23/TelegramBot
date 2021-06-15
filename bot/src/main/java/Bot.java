@@ -16,6 +16,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bot extends TelegramLongPollingBot {
+    /**
+     * метод main создает объект класса бот
+     * @param args
+     */
     public static void main(String[] args) {
         ApiContextInitializer.init();
         TelegramBotsApi telegramBotsApi = new TelegramBotsApi();
@@ -26,22 +30,12 @@ public class Bot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendMessage(Message message, String text) {
-        SendMessage sendMessage = new SendMessage();
-        sendMessage.enableMarkdown(true);
-        sendMessage.setChatId(message.getChatId().toString());
-        sendMessage.setReplyToMessageId(message.getMessageId());
-        sendMessage.setText(text);
-        try {
-            execute(sendMessage);
 
-        } catch (TelegramApiException e) {
-            //todo add logging to the project.
-            e.printStackTrace();
-        }
-    }
 
     @Override
+    /**
+     * метод onUpdateReceived отвечает на отправленное сообщение
+     */
     public void onUpdateReceived(Update update) {
 
         // We check if the update has a message and the message has text
@@ -116,71 +110,7 @@ public class Bot extends TelegramLongPollingBot {
                 } catch (TelegramApiException e) {
                     e.printStackTrace();
                 }
-            } else if (message_text.equals("C/C++")) {
-                Parser parser = new Parser();
-                SendMessage message = null;
-                try {
-                    message = new SendMessage() // Create a message object object
-                            .setChatId(chat_id)
-                            .setText(parser.find("C/C++"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    execute(message);
-
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            } else if (message_text.equals("Python")) {
-                Parser parser = new Parser();
-                SendMessage message = null;
-                try {
-                    message = new SendMessage() // Create a message object object
-                            .setChatId(chat_id)
-                            .setText(parser.find("Python"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    execute(message);
-
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            } else if (message_text.equals("Java")) {
-                Parser parser = new Parser();
-                SendMessage message = null;
-                try {
-                    message = new SendMessage() // Create a message object object
-                            .setChatId(chat_id)
-                            .setText(parser.find("Java"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    execute(message);
-
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            } else if (message_text.equals("Swift")) {
-                Parser parser = new Parser();
-                SendMessage message = null;
-                try {
-                    message = new SendMessage() // Create a message object object
-                            .setChatId(chat_id)
-                            .setText(parser.find("Swift"));
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                try {
-                    execute(message);
-
-                } catch (TelegramApiException e) {
-                    e.printStackTrace();
-                }
-            } else if (message_text.equals("другой")) {
+            }  else if (message_text.equals("другой")) {
                 SendMessage message = new SendMessage()
                         .setChatId(chat_id)
                         .setText("Введите, интересующий язык");
@@ -271,10 +201,19 @@ public class Bot extends TelegramLongPollingBot {
 
         }
     }
+
+    /**
+     * метод getBotUsername
+     * @return возвращает имя бота
+     */
     public String getBotUsername() {
         return "HelpCoding_bot";
     }
 
+    /**
+     * метод getBotToken() возвращает токен бота
+     * @return токен бота
+     */
     public String getBotToken() {
         return "";
     }

@@ -12,6 +12,12 @@ import java.util.List;
 
 
 public class Parser extends Application {
+    /**
+     * метод find парсит сайт, ищет информацию по введенному языку и выводит нужную
+     * @param substr введенный язык - подстрока для поиска
+     * @return нужный абзац
+     * @throws IOException
+     */
     public String find(String substr) throws IOException {
     Document document=Jsoup.connect("https://rb.ru/story/20-code-languages-to-learn/")
             .userAgent("Chrome/81.0.4044.138")
@@ -47,6 +53,12 @@ public class Parser extends Application {
         }
         else return null;
  }
+
+    /**
+     * метод findFacts() парсит сайт и выводит рандомный факт с этого сайта
+     * * @return рандомный факт
+     * @throws IOException
+     */
  public String findFacts() throws IOException {
      Document document= Jsoup.connect("https://www.interesnie-fakty.ru/nauka/kompyurery/o-programmistah-i-programmirovanii/#:~:text=Представляем%20интересные%20факты%20о%20программистах,котором%20можно%20было%20писать%20программы\n")
              .userAgent("Chrome/81.0.4044.138")
